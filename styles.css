@@ -55,7 +55,7 @@ body {
 
 .hero {
   background-color: #fff;
-  padding: 2rem 0;
+  padding: 4rem 0; /* Increased vertical padding */
   overflow: hidden;
 }
 
@@ -63,11 +63,10 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
   max-width: 900px;
   margin: 0 auto;
   position: relative;
-  z-index: 5;
+  overflow: hidden; /* Hide overflow from individual items */
 }
 
 .slider-btn {
@@ -83,64 +82,64 @@ body {
   flex-shrink: 0;
   z-index: 20;
   transition: background-color 0.2s;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
 }
 
 .slider-btn:hover {
   background-color: #e67e22;
 }
 
+.slider-btn.prev {
+  left: calc(1rem + 10px); /* Adjust for hero-images padding */
+}
+
+.slider-btn.next {
+  right: calc(1rem + 10px); /* Adjust for hero-images padding */
+}
+
 .hero-images {
-  position: relative;
-  height: 240px;
+  display: flex;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
   width: 100%;
-  max-width: 600px;
+  height: 320px;
+  max-width: 800px;
+  padding: 20px 10px 40px; /* Increased vertical padding */
+  box-sizing: content-box; /* Important for width calculation with padding */
+}
+
+.carousel-item {
+  flex: 0 0 calc(33.333% - 30px); /* Show 3 items with gap */
+  width: calc(33.333% - 30px);
+  margin: 0 15px; /* 15px on each side, total 30px per item */
+  height: 100%;
   display: flex;
   justify-content: center;
-  /* preserve-3d for better layering if needed, though z-index handles it */
-}
-
-.hero-image {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 200px;
-  height: 200px;
-  margin-left: -100px; /* Half of width */
-  margin-top: -100px; /* Half of height */
+  align-items: center;
   overflow: hidden;
-  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.5s ease;
-  opacity: 0.5;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  background-color: #fff;
-  z-index: 1;
-}
-
-.hero-image.position-0 {
-  transform: translateX(-160px) scale(0.85);
+  background-color: #f0f0f0; /* Light grey background */
+  transition: transform 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease;
   opacity: 0.7;
-  z-index: 5;
+  transform: scale(0.9);
   cursor: pointer;
 }
 
-.hero-image.position-1 {
-  transform: translateX(0) scale(1.1);
+.carousel-item.featured {
   opacity: 1;
-  z-index: 10;
+  transform: scale(1); /* No scale, just full size within its calc(33.333% - 20px) */
   box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  z-index: 2;
 }
 
-.hero-image.position-2 {
-  transform: translateX(160px) scale(0.85);
-  opacity: 0.7;
-  z-index: 5;
-  cursor: pointer;
-}
-
-.hero-image img {
+.carousel-item img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: cover; /* Cover the item area */
   display: block;
 }
 
@@ -590,7 +589,54 @@ body {
   }
 
   .hero-images {
-    height: 180px;
+    height: 280px;
+  }
+
+  .carousel-item {
+    flex: 0 0 80%;
+    width: 80%;
+    margin: 0 10px;
+  }
+
+  .philosophy {
+    margin: 0;
+    padding: 3rem 1.5rem;
+  }
+
+  .philosophy-container {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .philosophy-title {
+    min-width: auto;
+  }
+
+  .orange-line {
+    height: 40px;
+  }
+
+  .philosophy-v2 {
+    padding: 3rem 1.5rem;
+  }
+
+  .philosophy-v2 h2 {
+    font-size: 1.75rem;
+  }
+
+  .philosophy-v2 p {
+    font-size: 0.95rem;
+  }
+
+  .team-container {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .team-header {
+    min-width: auto;
+    max-width: none;
+    text-align: center;
   }
 }
 
