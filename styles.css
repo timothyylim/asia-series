@@ -55,114 +55,73 @@ body {
 
 .hero {
   background-color: #fff;
-  padding: 4rem 0; /* Increased vertical padding */
+  padding: 3rem 2rem; /* Adjusted from 4rem 0 to match v2's static hero */
   overflow: hidden;
 }
 
-.hero-slider {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  max-width: 900px;
+.hero-content {
+  max-width: 1000px;
   margin: 0 auto;
-  position: relative;
-  overflow: hidden; /* Hide overflow from individual items */
-}
-
-.slider-btn {
-  width: 32px;
-  height: 32px;
-  background-color: #d35400;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
   display: flex;
   align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  z-index: 20;
-  transition: background-color 0.2s;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 10;
+  gap: 3rem;
+  justify-content: space-between;
 }
 
-.slider-btn:hover {
-  background-color: #e67e22;
+.hero-text {
+  flex: 1;
+  max-width: 450px;
 }
 
-.slider-btn.prev {
-  left: calc(1rem + 10px); /* Adjust for hero-images padding */
-}
-
-.slider-btn.next {
-  right: calc(1rem + 10px); /* Adjust for hero-images padding */
-}
-
-.hero-images {
-  display: flex;
-  overflow-x: hidden;
-  scroll-behavior: smooth;
-  width: 100%;
-  height: 320px;
-  max-width: 800px;
-  padding: 20px 10px 40px; /* Increased vertical padding */
-  box-sizing: content-box; /* Important for width calculation with padding */
-}
-
-.carousel-item {
-  flex: 0 0 calc(33.333% - 30px); /* Show 3 items with gap */
-  width: calc(33.333% - 30px);
-  margin: 0 15px; /* 15px on each side, total 30px per item */
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  background-color: #f0f0f0; /* Light grey background */
-  transition: transform 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease;
-  opacity: 0.7;
-  transform: scale(0.9);
-  cursor: pointer;
-}
-
-.carousel-item.featured {
-  opacity: 1;
-  transform: scale(1); /* No scale, just full size within its calc(33.333% - 20px) */
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-  z-index: 2;
-}
-
-.carousel-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Cover the item area */
-  display: block;
-}
-
-.about-us {
-  text-align: center;
-  padding: 4rem 2rem;
-  background-color: #fff;
-}
-
-.about-us h1 {
-  font-size: 3rem;
+.hero-text h1 {
+  font-size: 3.25rem;
+  line-height: 1.2;
   font-weight: 400;
-  margin-bottom: 1rem;
   color: #333;
+  margin-bottom: 1rem;
   font-family: 'PT Serif', serif;
 }
 
-.about-us p {
+.hero-text p {
   font-size: 1rem;
   color: #666;
-  line-height: 1.8;
+  font-weight: 300;
   font-family: 'Inter', sans-serif;
 }
+
+.hero-visual {
+  flex: 1;
+  max-width: 450px;
+  position: relative;
+  height: 300px; /* Example height, adjust as needed for optimal visual balance */
+}
+
+.hero-image-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  overflow: hidden;
+  border-radius: 4px; /* Inherit from hero-visual img */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* Inherit from hero-visual img */
+}
+
+.hero-image-item img {
+  width: 100%;
+  height: 100%; /* Make image fill the container */
+  object-fit: cover;
+  display: block;
+  border-radius: 4px; /* Ensures inner image also has border-radius */
+}
+
+
+
+
+
+
 
 .philosophy {
   background-color: #f0f0f0;
@@ -588,15 +547,11 @@ body {
     width: 100%;
   }
 
-  .hero-images {
-    height: 280px;
-  }
 
-  .carousel-item {
-    flex: 0 0 80%;
-    width: 80%;
-    margin: 0 10px;
-  }
+
+
+
+
 
   .philosophy {
     margin: 0;
