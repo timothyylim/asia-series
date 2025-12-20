@@ -31,51 +31,32 @@
   </header>
 
   <section class="hero">
-    <div class="hero-slider">
-      <button class="slider-btn prev" aria-label="Previous">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-          <polyline points="15 18 9 12 15 6"></polyline>
-        </svg>
-      </button>
-      <div class="hero-images">
-        <div class="carousel-item featured">
-          <img src="images/LauraM.png" alt="LauraM">
-        </div>
-        <div class="carousel-item">
-          <img src="images/MeritJanow.png" alt="MeritJanow">
-        </div>
-        <div class="carousel-item">
-          <img src="images/jimHSnabe.png" alt="Jim H. Snabe">
-        </div>
-        <div class="carousel-item">
-          <img src="images/bernardChan.png" alt="Bernard Chan">
-        </div>
-
-        <div class="carousel-item">
-          <img src="images/Margarita Louis-Dreyfus-min.png" alt="Margarita Louis-Dreyfus">
-        </div>
-        <div class="carousel-item">
-          <img src="images/MeritJanow-1.png" alt="MeritJanow Alternate">
-        </div>
-        <div class="carousel-item">
-          <img src="images/PaulBulcke.png" alt="Paul Bulcke">
-        </div>
-        <div class="carousel-item">
-          <img src="images/ronnieChang.png" alt="Ronnie Chang">
-        </div>
-      </div>
-      <button class="slider-btn next" aria-label="Next">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-          <polyline points="9 18 15 12 9 6"></polyline>
-        </svg>
-      </button>
+    <div class="hero-content">
+       <div class="hero-text">
+         <h1>About Us</h1>
+         <p>Bridging Europe and Asia through dialogue,<br>trust, and collaboration.</p>
+       </div>
+       <div class="hero-visual">
+          <div class="hero-image-item">
+            <img src="images/LauraM.png" alt="LauraM">
+          </div>
+          <div class="hero-image-item">
+            <img src="images/MeritJanow.png" alt="MeritJanow">
+          </div>
+          <div class="hero-image-item">
+            <img src="images/jimHSnabe.png" alt="Jim H. Snabe">
+          </div>
+          <div class="hero-image-item">
+            <img src="images/bernardChan.png" alt="Bernard Chan">
+          </div>
+          <div class="hero-image-item">
+            <img src="images/Margarita Louis-Dreyfus-min.png" alt="Margarita Louis-Dreyfus">
+          </div>
+       </div>
     </div>
   </section>
 
-  <section class="about-us">
-    <h1>About Us</h1>
-    <p>Bridging Europe and Asia through dialogue,<br>trust, and collaboration.</p>
-  </section>
+
 
   <section class="philosophy">
     <div class="philosophy-container">
@@ -85,6 +66,32 @@
       </div>
       <div class="philosophy-content">
         <p>We believe that the world is more peaceful when global leaders strive to understand one another, despite possibly divergent values. We have created the Asia Leaders Series to act as a forum for open dialogue between Europe and Asia, in an effort to provide policy-makers, economists and business leaders with a safe place to address misconceptions, form new relationships, and align on pressing world issues.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="team-section">
+    <div class="team-container">
+      <div class="team-header">
+        <h2>Board of<br>Directors</h2>
+        <p>Bridging Europe and Asia through dialogue, trust, and collaboration.</p>
+      </div>
+      <div class="team-grid directors-grid">
+        <div class="member-card">
+          <img src="images/LauraM.png" alt="Dr. Hassan Al-Mansouri" class="member-photo">
+          <h3>Dr. Hassan Al-Mansouri</h3>
+          <p>Chairman & Founder</p>
+        </div>
+        <div class="member-card">
+          <img src="images/MeritJanow.png" alt="Victoria Chen" class="member-photo">
+          <h3>Victoria Chen</h3>
+          <p>Chief Executive Officer</p>
+        </div>
+        <div class="member-card">
+          <img src="images/bernardChan.png" alt="Christopher van der Merwe" class="member-photo">
+          <h3>Christopher van der Merwe</h3>
+          <p>Chief Operating Officer</p>
+        </div>
       </div>
     </div>
   </section>
@@ -130,32 +137,6 @@
           <img src="images/ronnieChang.png" alt="Alan Rosling" class="member-photo">
           <h3>Alan Rosling</h3>
           <p>Former Executive Director, Tata Group</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="team-section">
-    <div class="team-container">
-      <div class="team-header">
-        <h2>Board of<br>Directors</h2>
-        <p>Bridging Europe and Asia through dialogue, trust, and collaboration.</p>
-      </div>
-      <div class="team-grid directors-grid">
-        <div class="member-card">
-          <img src="images/LauraM.png" alt="Dr. Hassan Al-Mansouri" class="member-photo">
-          <h3>Dr. Hassan Al-Mansouri</h3>
-          <p>Chairman & Founder</p>
-        </div>
-        <div class="member-card">
-          <img src="images/MeritJanow.png" alt="Victoria Chen" class="member-photo">
-          <h3>Victoria Chen</h3>
-          <p>Chief Executive Officer</p>
-        </div>
-        <div class="member-card">
-          <img src="images/bernardChan.png" alt="Christopher van der Merwe" class="member-photo">
-          <h3>Christopher van der Merwe</h3>
-          <p>Chief Operating Officer</p>
         </div>
       </div>
     </div>
@@ -244,71 +225,33 @@
   </footer>
 
   <script>
-    const heroImagesContainer = document.querySelector('.hero-images');
-    const prevBtn = document.querySelector('.slider-btn.prev');
-    const nextBtn = document.querySelector('.slider-btn.next');
-    const carouselItems = document.querySelectorAll('.carousel-item');
+    const heroImageItems = document.querySelectorAll('.hero-image-item');
+    let currentHeroImageIndex = 0;
+    const heroImageInterval = 10000; // 10 seconds
 
-    let currentIndex = 0; // Start with the first image
-    const totalItems = carouselItems.length;
-
-    function updateCarousel() {
-      // Remove 'featured' from all and add to current
-      carouselItems.forEach((item) => {
-        item.classList.remove('featured');
-      });
-      // Ensure currentIndex is always valid
-      currentIndex = (currentIndex + totalItems) % totalItems;
-      carouselItems[currentIndex].classList.add('featured');
-
-      // Calculate scroll position to center the current item
-      const currentItem = carouselItems[currentIndex];
-      const itemOffsetLeft = currentItem.offsetLeft;
-      const itemWidth = currentItem.offsetWidth;
-      
-      // The heroImagesContainer has padding, so we need to account for its internal width
-      const containerVisibleWidth = heroImagesContainer.clientWidth; // clientWidth excludes padding
-      
-      // Calculate scroll left position to center the current item
-      // The item is already offset by its left margin from the start of the scrollable content.
-      // We want the *middle* of the current item to be in the *middle* of the visible container.
-      const scrollTarget = itemOffsetLeft - (containerVisibleWidth / 2) + (itemWidth / 2);
-
-      heroImagesContainer.scrollTo({
-        left: scrollTarget,
-        behavior: 'smooth'
+    function showHeroImage(index) {
+      heroImageItems.forEach((item, i) => {
+        if (i === index) {
+          item.style.opacity = '1';
+          item.style.zIndex = '1';
+        } else {
+          item.style.opacity = '0';
+          item.style.zIndex = '0';
+        }
       });
     }
 
-    function nextSlide() {
-      currentIndex++;
-      updateCarousel();
+    function nextHeroImage() {
+      currentHeroImageIndex = (currentHeroImageIndex + 1) % heroImageItems.length;
+      showHeroImage(currentHeroImageIndex);
     }
 
-    function prevSlide() {
-      currentIndex--;
-      updateCarousel();
+    // Initialize the hero image with a random image on load and then cycle
+    if (heroImageItems.length > 0) {
+      currentHeroImageIndex = Math.floor(Math.random() * heroImageItems.length);
+      showHeroImage(currentHeroImageIndex);
+      setInterval(nextHeroImage, heroImageInterval);
     }
-
-    nextBtn.addEventListener('click', nextSlide);
-    prevBtn.addEventListener('click', prevSlide);
-    
-    // Add click events to items to make them featured
-    carouselItems.forEach((item, index) => {
-      item.addEventListener('click', () => {
-        currentIndex = index;
-        updateCarousel();
-      });
-    });
-
-    // Optional: Auto-rotate carousel every 5 seconds
-    setInterval(nextSlide, 30000);
-
-    // Initialize carousel on load
-    // Use a timeout to ensure items are rendered and their offsets are correct
-    setTimeout(() => {
-      updateCarousel();
-    }, 100); 
   </script>
 </body>
 
